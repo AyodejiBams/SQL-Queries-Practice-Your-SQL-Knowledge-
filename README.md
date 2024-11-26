@@ -31,6 +31,7 @@ To set up the schema, use the **w3schools-database**:
    JOIN orders o
    ON c.CustomerID = o.CustomerID;
 
+---
 **2. Orders with Shippers**
 Retrieve orders along with the name of the shipping company:
 ```SELECT o.OrderID, shp.ShipperName
@@ -38,6 +39,7 @@ FROM orders o
 JOIN shippers shp
 ON o.ShipperID = shp.ShipperID;
 
+---
 **3. Customer-Specific Orders**
 
 ```SELECT c.CustomerID, c.CustomerName, o.OrderID
@@ -46,6 +48,7 @@ JOIN orders o
 ON c.CustomerID = o.CustomerID
 WHERE c.CustomerID > 50;
 
+---
 **4. Employees with Large Orders**
 ```SELECT o.OrderID, e.EmployeeID, e.FirstName, e.LastName
 FROM orders o
@@ -53,7 +56,7 @@ JOIN employees e
 ON o.EmployeeID = e.EmployeeID
 WHERE o.OrderID > 10400;
 
-
+---
 # Expert Level Queries
 **1. Most Expensive Product**
 
@@ -62,6 +65,7 @@ FROM products
 ORDER BY Price DESC
 LIMIT 1;
 
+---
 **2. Second Most Expensive Product**
 Retrieve the second most expensive product:
 ```SELECT ProductID, ProductName, Price
@@ -69,6 +73,7 @@ FROM products
 ORDER BY Price DESC
 LIMIT 1 OFFSET 1;
 
+---
 **3. Customer Spending**
 Find the customer who spent the most:
 ```SELECT c.CustomerID, c.CustomerName, SUM(od.Quantity * p.Price) AS TotalSpending
@@ -80,6 +85,7 @@ GROUP BY c.CustomerID
 ORDER BY TotalSpending DESC
 LIMIT 1;
 
+---
 **4. Customer Spending in Canada**
 Find the top spender in Canada:
 ```SELECT c.CustomerID, c.CustomerName, SUM(od.Quantity * p.Price) AS TotalSpending, c.Country
@@ -92,6 +98,7 @@ GROUP BY c.CustomerID
 ORDER BY TotalSpending DESC
 LIMIT 1;
 
+---
 **5. Total Value of Shipper Orders**
 Calculate the total value of orders handled by each shipping company:
 ```SELECT o.ShipperID, shp.ShipperName, SUM(od.Quantity * p.Price) AS TotalValueOfOrder
